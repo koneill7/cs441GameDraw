@@ -19,7 +19,7 @@ public class drawGame extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 		img = new Texture("Characters/badlogic.jpg");
-		camera = new OrthographicCamera(500,800);
+		camera = new OrthographicCamera(300,400);
 		drawShape = new ShapeRenderer();
 
 	}
@@ -36,8 +36,8 @@ public class drawGame extends ApplicationAdapter {
 		drawShape.setProjectionMatrix(camera.combined);
 
 		drawShape.begin(ShapeType.Line);
-		drawShape.setColor(255, 255, 204, 1);
-		drawShape.line(-10, 0, 10, 0);
+		drawShape.setColor(15, 91, 20, 1);
+		drawShape.line(-40, 0, 40, 0);
 		drawShape.end();
 
 	}
