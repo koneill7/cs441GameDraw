@@ -6,13 +6,15 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
+import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Rectangle;
-
+import com.badlogic.gdx.math.Vector3;
 
 
 public class drawGame extends ApplicationAdapter {
@@ -26,17 +28,16 @@ public class drawGame extends ApplicationAdapter {
 	int moveGrass, moveSunOut, moveSunIn, moveR1, moveR2, moveR3, moveWater = 0; //0 is initial state before a shape is clicked
 	@Override
 	public void create () {
-		//batch = new SpriteBatch();
+		batch = new SpriteBatch();
 		//img = new Texture("Characters/badlogic.jpg");
 		drawShape = new ShapeRenderer();
 		grass = new Rectangle(200, 1000, 100, 2000);
 		sunOuter = new Circle(300, 750, 100);
-		sunInner = new Circle(1000, 750, 75);
+		sunInner = new Circle(1000, 900, 75);
 		r1 = new Rectangle(1600, 800, 75, 2000);
 		r2 = new Rectangle(700, 900, 125, 2000);
 		r3 = new Rectangle(300, 200, 200, 2000);
 		water = new Rectangle(20, 890, 200, 2000);
-
 		collision = new Circle(); //collision circle is never drawn, so on touch collision is invisible
 
 		camera = new OrthographicCamera();
@@ -80,7 +81,6 @@ public class drawGame extends ApplicationAdapter {
 		drawShape.rect(grass.x, grass.y, grass.width, grass.height);
 
 		drawShape.end();
-
 
 		if(Gdx.input.isTouched()){
 			collision.set(Gdx.input.getX(),Gdx.graphics.getHeight() - Gdx.input.getY() + 200, 80);
